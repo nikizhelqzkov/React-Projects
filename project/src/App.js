@@ -1,16 +1,22 @@
 import React, { Component } from "react";
 import "./App.css";
-
+import Header from "./Header";
+import Content from "./Content";
+import Footer from "./Footer";
+import Main from "./Main";
+import NewContent from "./newContent";
 class App extends Component {
   render() {
-    const text = "Here is your varaible!";
-    const paragraph = <p>{"Hello , today is the day!!".toUpperCase()}</p>;
     return (
       <div className="App">
-        <h1>Hello</h1>
-        <h3>Zdr</h3>
-        <p>{text}</p>
-        {paragraph}
+        <Header bc="blue" title="ReactJs" />
+        <Main bC="red" />
+        
+        <Content color="red" bg="green">
+          История на България
+        </Content>
+        <NewContent>Auto Counter: </NewContent>
+        <Footer>Nikolay Zhelyazkov</Footer>
       </div>
     );
   }
