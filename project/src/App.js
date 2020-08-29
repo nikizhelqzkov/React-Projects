@@ -6,6 +6,7 @@ import Footer from "./Footer";
 import Main from "./Main";
 import User from "./User";
 import NewContent from "./newContent";
+import ChatZone from "./ChatZone"
 class App extends Component {
   render() {
     return (
@@ -17,6 +18,7 @@ class App extends Component {
           История на България
         </Content>
         <User title="OOK"/>
+        <ChatZone/>
         <NewContent>Auto Counter: </NewContent>
         <Footer>Nikolay Zhelyazkov</Footer>
       </div>
