@@ -5,8 +5,8 @@ class ChatZone extends Component {
     super(props);
     this.state = {
       messages: [
-         { author: "IT_SERVICE", content: "WELCOME TO THE CHAT" },
-         { author: "IT_SERVICE", content: "START CHATING" },
+        { author: "IT_SERVICE", content: "WELCOME TO THE CHAT" },
+        { author: "IT_SERVICE", content: "START CHATING" },
         // { author: "Ivan", content: "What's up" },
         // { author: "Nikol", content: "Nothing" },
         // { author: "Ivan", content: "Ok,bye" },
@@ -36,9 +36,9 @@ class ChatZone extends Component {
     event.preventDefault();
     let name = this.state.name;
     let text = this.state.text;
-    this.state.messages.push({ author: name, content: text }); 
+    this.state.messages.push({ author: name, content: text });
     this.setState({ name: "", text: "" });
-    console.log(this.state.messages)
+    console.log(this.state.messages);
   };
 
   render() {
