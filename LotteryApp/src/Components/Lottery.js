@@ -9,9 +9,12 @@ class Lottery extends Component {
   }
 
   renderTicket() {
-    const lotteryTickets = this.props.tickets.map((ticket, index) => {
+    const {tickets,actions} = this.props;
+    const lotteryTicketsAction = {removeTicket:actions.removeTicket};
+    const lotteryTickets = tickets.map((ticket, index) => {
       return (
         <LotteryTicket
+          actions = {lotteryTicketsAction}
           color={ticket.color}
           number={ticket.number}
           index={index}

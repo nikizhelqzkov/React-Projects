@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 
 class LotteryTicket extends Component {
   render() {
-    const {color, number} = this.props;
+    const {actions,index,color, number} = this.props;
     return (
       <div
         style={{
@@ -12,7 +12,7 @@ class LotteryTicket extends Component {
           margin: 'auto',
         }}
       >
-        <button style={{float: 'left'}}> X </button>
+        <button onClick={()=>{actions.removeTicket(index)}} style={{float: 'left'}}> X </button>
         <small>
           Твоето число е: <b>{number}</b>
         </small>
