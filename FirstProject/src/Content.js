@@ -7,7 +7,7 @@ class Content extends Component {
   }
   incrementCounter = () => {
     this.setState((prevState) => {
-      return { counter: prevState.counter++ };
+      return { counter: ++prevState.counter };
     });
   };
   decrementCounter = () => {
@@ -15,7 +15,7 @@ class Content extends Component {
       if (prevState.counter <= 0) {
         this.resetCounter()
       }
-      return { counter: prevState.counter-- };
+      return { counter: --prevState.counter };
     });
   };
   resetCounter = () => {
