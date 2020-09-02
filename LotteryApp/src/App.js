@@ -23,6 +23,7 @@ class App extends Component {
     const actions = {};
     actions.registerTicket = this.registerTicket;
     actions.removeTicket = this.removeTicket;
+    console.log(tickets);
     return (
       <Lottery
         actions={actions}

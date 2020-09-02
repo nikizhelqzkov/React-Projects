@@ -1,8 +1,4 @@
 import {getRandomNumber, getRandomColor} from './utils';
-
-function removeDublicates(data) {
-  return data.filter((value, index) => data.indexOf(value) === index);
-}
 export function registerTicket() {
   const newTicket = {
     number: getRandomNumber(),
@@ -13,8 +9,8 @@ export function registerTicket() {
     prevState.tickets.push(newTicket);
 
     return {
-      tickets: removeDublicates(prevState.tickets),
-      remainingTickets: prevState.remainingTickets--,
+      tickets: prevState.tickets,
+      remainingTickets: --prevState.remainingTickets,
     };
   });
 }
@@ -24,7 +20,7 @@ export function removeTicket(index) {
     prevState.tickets.splice(index, 1);
     return {
       tickets: prevState.tickets,
-      remainingTickets: prevState.remainingTickets++,
+      remainingTickets: ++prevState.remainingTickets,
     };
   });
 }
