@@ -1,0 +1,20 @@
+$myName:center;
+$myColor:#f32013;
+$newColor:#34a1c2;  
+
+.App {
+    text-align: $myName;
+}
+.App li{
+    list-style: none;
+    color:$myColor;
+}
+#X:hover{
+    background-color: $myColor;
+    border-color: $myColor;
+}
+#new:hover{
+    background-color: $newColor;
+    border-color: $newColor;
+    color:white;
+}

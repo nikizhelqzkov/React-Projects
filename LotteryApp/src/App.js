@@ -4,6 +4,9 @@ import Lottery from './Components/Lottery';
 import Final from './Components/Final';
 import {registerTicket, removeTicket, finish,reset} from './Helper/actions';
 import {getRandomNumber} from './Helper/utils';
+
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'antd/dist/antd.css';
 class App extends Component {
   constructor(props) {
     super(props);
@@ -33,7 +36,6 @@ class App extends Component {
     actions.removeTicket = this.removeTicket;
     actions.finish = this.finish;
 
-    console.log(tickets);
     return (
       <Lottery
         actions={actions}

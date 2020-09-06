@@ -1,4 +1,6 @@
 import React, {Component} from 'react';
+import {Button, Container, Row, Col} from 'react-bootstrap';
+import {Card,Divider } from 'antd';
 class Final extends Component {
   renderWinning() {
     return (
@@ -31,14 +33,26 @@ class Final extends Component {
     return false;
   }
 
-  bgColor(){
-    return this.isWinning()?'Chartreuse':'Crimson';
+  bgColor() {
+    return this.isWinning() ? 'Chartreuse' : 'Crimson';
   }
   render() {
-    return <div style={{padding:15, backgroundColor: this.bgColor()}}>
-      {this.isWinning()?this.renderWinning():this.renderLost()}
-      <button onClick={this.props.actions.reset}>НОВО ТЕГЛЕНЕ</button>
-    </div>;
+    return (
+      <Container
+        fluid="lg"
+        style={{padding: 15,  marginTop: 10,backgroundColor: this.bgColor()}}
+      >
+        <Row>
+          <Col>
+            {this.isWinning() ? this.renderWinning() : this.renderLost()}
+
+            <Button variant="light" id="new" block onClick={this.props.actions.reset}>
+              НОВО ТЕГЛЕНЕ
+            </Button>
+          </Col>
+        </Row>
+      </Container>
+    );
   }
 }
 export default Final;

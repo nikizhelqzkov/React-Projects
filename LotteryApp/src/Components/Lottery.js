@@ -1,12 +1,17 @@
 import React, {Component} from 'react';
 import LotteryTicket from './LotteryTicket';
+import {Button, Container, Row, Col} from 'react-bootstrap';
+import { Typography,Divider } from 'antd';
+
+
+const{Title} = Typography;
 class Lottery extends Component {
   renderButton() {
     const {remainingTickets, actions} = this.props;
     if (remainingTickets > 0) {
-      return <button onClick={actions.registerTicket}>Купи билет</button>;
+      return <Button  block onClick={actions.registerTicket}>Купи билет</Button>;
     }
-    return <button onClick={actions.finish}>Провери за печалба</button>;
+    return <Button variant="success" block onClick={actions.finish}>Провери за печалба</Button>;
   }
 
   renderTicket() {
@@ -29,15 +34,20 @@ class Lottery extends Component {
 
   render() {
     return (
-      <div>
-        <h2>Лотария</h2>
+      <Container >
+      <Row>
+        <Col>
+        <Title>Лотария</Title>
         {this.renderButton()}
         <br />
         <small>Оставащи билети: {this.props.remainingTickets}</small>
         <br />
-        <hr />
+        <Divider>Вашите билетчета</Divider>
         {this.renderTicket()}
-      </div>
+     
+      </Col>
+      </Row>
+      </Container>
     );
   }
 }
