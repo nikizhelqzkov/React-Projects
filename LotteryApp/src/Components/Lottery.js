@@ -37,7 +37,7 @@ class Lottery extends Component {
       <Container >
       <Row>
         <Col>
-        <Title>Лотария</Title>
+        <Title>Лудата лотария</Title>
         {this.renderButton()}
         <br />
         <small>Оставащи билети: {this.props.remainingTickets}</small>
