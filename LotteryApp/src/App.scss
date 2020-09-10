@@ -1,9 +1,9 @@
 $myName:center;
 $myColor:#f32013;
 $newColor:#34a1c2;  
-
 .App {
     text-align: $myName;
+    margin:auto;
 }
 .App li{
     list-style: none;

@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import {Button, Container, Row, Col} from 'react-bootstrap';
-import {Card,Divider } from 'antd';
 class Final extends Component {
   renderWinning() {
     return (
@@ -15,7 +14,7 @@ class Final extends Component {
   renderLost() {
     return (
       <>
-        <h1>Съжалявам!!!</h1>
+        <h1>О, не!</h1>
         <h2>Ти не позна числото!</h2>
         <h2>Пробвай отново!</h2>
         <h3>Печелившото число бе: {this.props.winningNumber}</h3>
@@ -39,8 +38,8 @@ class Final extends Component {
   render() {
     return (
       <Container
-        fluid="lg"
-        style={{padding: 15,  marginTop: 10,backgroundColor: this.bgColor()}}
+        fluid="sm"
+        style={{padding: 5,  marginTop: 10,backgroundColor: this.bgColor()}}
       >
         <Row>
           <Col>
