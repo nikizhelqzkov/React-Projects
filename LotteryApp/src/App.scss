@@ -1,8 +1,6 @@
-$myName:center;
-$myColor:#f32013;
-$newColor:#34a1c2;  
+@import "variables";
 .App {
-    text-align: $myName;
+    text-align: $myCenter;
     margin:auto;
 }
 .App li{
@@ -16,5 +14,5 @@ $newColor:#34a1c2;
 #new:hover{
     background-color: $newColor;
     border-color: $newColor;
-    color:white;
+    color:$white;
 }

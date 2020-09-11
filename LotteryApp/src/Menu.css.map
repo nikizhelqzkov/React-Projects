@@ -1,8 +1,9 @@
 {
     "version": 3,
-    "mappings": "AAAA,AAAA,yBAAyB,AAAA,MAAM,CAAA;EAC3B,gBAAgB,EAAE,KAAK;EACvB,KAAK,EAAC,GAAG;CACZ",
+    "mappings": "AACA,AAAA,yBAAyB,AAAA,MAAM,CAAA;EAC3B,gBAAgB,ECCb,KAAK;EDAR,KAAK,ECFA,OAAO;CDGf",
     "sources": [
-        "Menu.scss"
+        "Menu.scss",
+        "variables.scss"
     ],
     "names": [],
     "file": "Menu.css"
