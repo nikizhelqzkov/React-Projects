@@ -9,7 +9,7 @@ import {
   BreadcrumbItem,
 } from "reactstrap";
 import { Link } from "react-router-dom";
-
+import CommentForm from './CommentFormComponent';
 function RenderDish({ dish }) {
   return (
     <div className="col-12 col-md-5 m-1">
@@ -34,6 +34,7 @@ function RenderComments({comments}) {
         day: "2-digit",
       });
       return (
+        <>
         <ul className="list-unstyled">
           <li key={com.id}>
             <p>{com.comment}</p>
@@ -46,12 +47,14 @@ function RenderComments({comments}) {
             </p>
           </li>
         </ul>
+        </>
       );
     });
     return (
       <div className="col-12 col-md-5 m-1">
         <h4>Comments</h4>
         {comment}
+        <CommentForm/>
       </div>
     );
   } else {
