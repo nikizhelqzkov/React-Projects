@@ -201,6 +201,14 @@
       "comment": "It's your birthday, we're gonna party!",
       "author": "25 Cent",
       "date": "2011-12-02T17:57:28.556094Z"
+    },
+    {
+      "dishId": 1,
+      "rating": "4",
+      "author": "Nikolay",
+      "comment": "Qsha be foncho",
+      "date": "2021-03-01T14:02:45.315Z",
+      "id": 20
     }
   ],
   "promotions": [
