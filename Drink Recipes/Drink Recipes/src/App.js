@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import {Button, Row } from "react-bootstrap";
+import { Button, Row } from "react-bootstrap";
 import Grid from "./components/Grid";
 const App = () => {
   const getData = async (name) => {
@@ -53,7 +53,7 @@ const App = () => {
         </form>
       </Row>
       <Row className="justify-content-center mx-auto">
-        {info.length !== 0 ? <Grid results={info} /> : null}
+        {info.length !== 0 && <Grid results={info} />}
       </Row>
     </div>
   );
