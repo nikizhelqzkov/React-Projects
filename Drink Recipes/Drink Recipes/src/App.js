@@ -47,7 +47,7 @@ const App = () => {
             value={input}
             onChange={changeInput}
           />
-          <Button className="mx-1" onClick={getInputVal}>
+          <Button className="mx-1" type="submit">
             Search
           </Button>
         </form>
