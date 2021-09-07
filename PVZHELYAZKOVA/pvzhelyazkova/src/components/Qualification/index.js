@@ -1,6 +1,11 @@
 import React from "react";
-
+import Navbar from "../Navbar";
 const Qualification = () => {
-  return <>Qualification</>;
+  return (
+    <>
+      <Navbar />
+      Qualification
+    </>
+  );
 };
 export default Qualification;

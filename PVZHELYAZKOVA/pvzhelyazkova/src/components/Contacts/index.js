@@ -1,6 +1,11 @@
 import React from "react";
-
+import Navbar from "../Navbar";
 const Contacts = () => {
-  return <div>Contact</div>;
+  return (
+    <>
+      <Navbar />
+      Contact
+    </>
+  );
 };
 export default Contacts;

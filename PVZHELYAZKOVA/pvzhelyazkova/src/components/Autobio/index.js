@@ -1,6 +1,11 @@
 import React from "react";
-
+import Navbar from "../Navbar";
 const Autobiography = () => {
-  return <>Qualification</>;
+  return (
+    <>
+      <Navbar />
+      Autobiography
+    </>
+  );
 };
 export default Autobiography;
