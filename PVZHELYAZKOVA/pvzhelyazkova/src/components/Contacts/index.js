@@ -3,7 +3,7 @@ import Navbar from "../Navbar";
 const Contacts = () => {
   return (
     <>
-      <Navbar />
+      <Navbar section='contacts'/>
       Contact
     </>
   );

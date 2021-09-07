@@ -3,7 +3,7 @@ import Navbar from "../Navbar";
 const Activity = () => {
   return (
     <>
-      <Navbar />
+      <Navbar section='activity'/>
       Activity
     </>
   );

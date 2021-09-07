@@ -3,7 +3,7 @@ import Navbar from "../Navbar";
 const Autobiography = () => {
   return (
     <>
-      <Navbar />
+      <Navbar section='autobiography'/>
       Autobiography
     </>
   );

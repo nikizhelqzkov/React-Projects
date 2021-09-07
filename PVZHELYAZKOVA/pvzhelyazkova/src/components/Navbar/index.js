@@ -1,26 +1,32 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-const Navbar = () => {
+import { Wrapper } from "./Navbar.Styles";
+const Navbar = ({ section }) => {
+  const currentActiveClass = (text) => {
+    return section === text ? "current" : "";
+  };
   return (
-    <>
-      <ul>
-        <li>
-          <NavLink to="/">Начало</NavLink>
+    <Wrapper>
+      <ul className="d-none d-lg-flex nav--full">
+        <li className="nav--full__items">
+          <NavLink to="/" className={currentActiveClass('home')}>
+            Начало
+          </NavLink>
         </li>
-        <li>
-          <NavLink to="/autobiography">Автобиография</NavLink>
+        <li className="nav--full__items">
+          <NavLink to="/autobiography" className={currentActiveClass('autobiography')}>Автобиография</NavLink>
         </li>
-        <li>
-          <NavLink to="/qualification">Квалификация</NavLink>
+        <li className="nav--full__items">
+          <NavLink to="/qualification" className={currentActiveClass('qualification')}>Квалификация</NavLink>
         </li>
-        <li>
-          <NavLink to="/activity">Дейности</NavLink>
+        <li className="nav--full__items">
+          <NavLink to="/activity" className={currentActiveClass('activity')}>Дейности</NavLink>
         </li>
-        <li>
-          <NavLink to="/contacts">Contacts</NavLink>
+        <li className="nav--full__items">
+          <NavLink to="/contacts" className={currentActiveClass('contacts')}>Контакти</NavLink>
         </li>
       </ul>
-    </>
+    </Wrapper>
   );
 };
 export default Navbar;

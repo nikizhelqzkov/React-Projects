@@ -3,7 +3,7 @@ import Navbar from "../Navbar";
 const Qualification = () => {
   return (
     <>
-      <Navbar />
+      <Navbar section='qualification'/>
       Qualification
     </>
   );
