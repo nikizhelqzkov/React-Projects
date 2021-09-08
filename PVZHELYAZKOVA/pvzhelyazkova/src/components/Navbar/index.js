@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import { Wrapper } from "./Navbar.Styles";
 const Navbar = ({ section }) => {
@@ -6,6 +6,32 @@ const Navbar = ({ section }) => {
     return section === text ? "current" : "";
   };
   const [toggle, isToggle] = useState(false);
+  const changeTitle = (text) => {
+    switch (text) {
+      case "home":
+        document.title = "Начало";
+        break;
+      case "contacts":
+        document.title = "Контакти";
+        break;
+      case "autobiography":
+        document.title = "Автобиография";
+        break;
+      case "activity":
+        document.title = "Дейности";
+        break;
+      case "qualification":
+        document.title = "Квалификация";
+        break;
+
+      default:
+        document.title = "Грешна страница";
+        break;
+    }
+  };
+  useEffect(() => {
+    changeTitle(section);
+  });
   return (
     <Wrapper>
       <ul className="d-none d-lg-flex nav--full">
