@@ -18,17 +18,17 @@ export const Wrapper = styled.nav`
         line-height: 1.5;
         padding: 1.3rem 1.5rem;
         transition: all 0.2s ease-in-out;
-        @media (max-width: 1200px) {
-          font-size: 1rem;
-          &:hover{
-              font-size: 1.5rem;
-          }
-        }
-
         &:hover {
           background-color: #4498da;
           font-size: 2rem;
         }
+        @media (max-width: 1200px) {
+          font-size: 1rem;
+          &:hover {
+            font-size: 1.5rem;
+          }
+        }
+
         &.current {
           background-color: #4498ba;
         }
@@ -45,6 +45,17 @@ export const Wrapper = styled.nav`
       cursor: pointer;
       padding: 1rem;
       text-align: center;
+      transition: 0.3s all ease-in-out;
+      &:hover {
+        background: #fff1ad;
+        span {
+          width: 50px;
+          transition: 0.3s width ease-in-out;
+          &::before,&::after{
+            width: 50px
+          }
+        }
+      }
       @media (max-width: 700px) {
         width: 40%;
       }
@@ -58,6 +69,7 @@ export const Wrapper = styled.nav`
         display: inline-block;
         position: relative;
         width: 30px;
+        transition: 0.3s width ease-in-out;
         border-top: 2px solid #848484;
         top: -3px;
         left: 0;
@@ -110,31 +122,31 @@ export const Wrapper = styled.nav`
         }
       }
     }
-    &__list{
-        list-style: none;
-        padding-left: 0;
-        font-size: 1rem;
-        text-align: center;
-        padding: 1rem 0;
-        &__items{
-            padding: 1rem;
-            a{
-                text-decoration: none;
-                font-size: 2rem;
-                color: #fff;
-                transition: .3s ease-in-out;
-                &:hover{
-                    font-size: 2.5rem;
-                    color: #fff1ad;
-                }
-                @media(max-width:350px){
-                    font-size: 1.5rem;
-                    &:hover{
-                        font-size: 2rem;
-                    }
-                }
+    &__list {
+      list-style: none;
+      padding-left: 0;
+      font-size: 1rem;
+      text-align: center;
+      padding: 1rem 0;
+      &__items {
+        padding: 1rem;
+        a {
+          text-decoration: none;
+          font-size: 2rem;
+          color: #fff;
+          transition: 0.3s ease-in-out;
+          &:hover {
+            font-size: 2.5rem;
+            color: #fff1ad;
+          }
+          @media (max-width: 350px) {
+            font-size: 1.5rem;
+            &:hover {
+              font-size: 2rem;
             }
+          }
         }
+      }
     }
   }
 `;
