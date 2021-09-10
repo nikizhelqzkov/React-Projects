@@ -9,7 +9,7 @@ const Navbar = ({ section }) => {
   const changeTitle = (text) => {
     switch (text) {
       case "home":
-        document.title = "Начало";
+        document.title = "Мария Желязкова";
         break;
       case "contacts":
         document.title = "Контакти";
