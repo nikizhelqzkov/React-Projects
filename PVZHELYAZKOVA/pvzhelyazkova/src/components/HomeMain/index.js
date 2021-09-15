@@ -8,13 +8,12 @@ const HomeMain = () => {
   const [galleryImages, setGalleryImages] = useState([]);
 
   useEffect(() => {
-    // if (galleryImages.length < 1) {
     if (galleryImages.length === 0) {
       getData();
-      // setGalleryImages();
+
     }
     console.log(galleryImages);
-    // }
+
   }, [galleryImages]);
 
   const getData = async () => {
@@ -25,7 +24,6 @@ const HomeMain = () => {
       const data = await response.json();
       const images = data.data;
       setGalleryImages(images);
-      // console.log(galleryImages);
     } catch (error) {
       console.error(error);
     }

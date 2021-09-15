@@ -12,11 +12,6 @@ const GalleryHome = ({ data }) => {
       )
     );
   });
-
-  // const images = data.map(
-  //   (image) =>
-  //     image && <img src={image.src} key={image.key} alt={image.title} />
-  // );
   return (
     <Carousel autoPlay infiniteLoop>
       {slides}
