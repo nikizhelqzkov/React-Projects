@@ -12,7 +12,6 @@ const Footer = () => {
           <h3 className="footer__list--title">Адрес на Средно училище "Панайот Волов"</h3>
           <iframe
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2176.4030710567495!2d26.916740457038905!3d43.26924165487743!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40a58a5f561a4473%3A0xfb5918d0c83beae8!2z0KHRgNC10LTQvdC-INGD0YfQuNC70LjRidC1IOKAntCf0LDQvdCw0LnQvtGCINCS0L7Qu9C-0LLigJw!5e0!3m2!1sbg!2sbg!4v1631265724538!5m2!1sbg!2sbg"
-            // style={{ width: "70%", height: "300px" }}
             allowFullScreen=""
             loading="lazy"
             title="School map"

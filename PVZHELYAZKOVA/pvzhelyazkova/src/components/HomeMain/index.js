@@ -3,35 +3,24 @@ import { Wrapper } from "./HomeMain.Styles";
 import mainImg from "../../assets/images/home_main.jpg";
 import GalleryHome from "../GalleryHome";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
-
+import { db } from "../../firebase";
+import { collection, getDocs } from "firebase/firestore";
 const HomeMain = () => {
   const [galleryImages, setGalleryImages] = useState([]);
-
+  const dataCollectionRef = collection(db, "home_main_gallery");
   useEffect(() => {
-    if (galleryImages.length === 0) {
-      getData();
-
-    }
-    console.log(galleryImages);
-
-  }, [galleryImages]);
-
+    getData();
+    // console.log(galleryImages);
+  }, []);
   const getData = async () => {
-    try {
-      const response = await fetch(
-        "https://pvzhelyazkova-default-rtdb.europe-west1.firebasedatabase.app/galleryHome.json"
-      );
-      const data = await response.json();
-      const images = data.data;
-      setGalleryImages(images);
-    } catch (error) {
-      console.error(error);
-    }
+    const data = await getDocs(dataCollectionRef);
+    setGalleryImages(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+    console.log(galleryImages);
   };
+
   return (
     <Wrapper className="home__main">
       <h2>{"Добре дошли в сайта на мария желязкова".toUpperCase()}</h2>
-
       <img
         src={mainImg}
         alt="Maria is class leader"
