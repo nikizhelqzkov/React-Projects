@@ -1,12 +1,18 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import Result from "./Result";
+import { Cocktail } from "../../Models/Coctail";
+import Result from "../Result";
 
-const Grid = ({ results }) => {
+
+type GridProps = {
+  results: Cocktail[];
+};
+
+const Grid = ({ results }: GridProps) => {
   const resList = results.map(
     (drink) =>
       drink && (
-        <div className="col-12 col-md-6 col-xl-4">
+        <div className="col-12 col-md-6 col-xl-4" key={drink.idDrink}>
           <Result
             key={drink.idDrink}
             name={drink.strDrink}

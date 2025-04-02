@@ -1,13 +1,21 @@
 import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Wrapper } from "./Result.Styles";
-import ResultInfo from "../ResultInfo";
-const Result = ({ name, category, image, information }) => {
-  const [isOpen, setOpen] = useState(false);
-  const moreInfo = (e) => {
+
+type ResultProps = {
+  name: string;
+  category: string;
+  image: string;
+  information: string;
+};
+const Result = ({ name, category, image, information }: ResultProps) => {
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+
+  const moreInfo = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    setOpen(!isOpen);
+    setIsOpen(!isOpen);
   };
+
   return (
     <Wrapper className="container result">
       {isOpen ? (
@@ -34,3 +42,11 @@ const Result = ({ name, category, image, information }) => {
 };
 
 export default Result;
+
+const ResultInfo = ({ info }: { info: string }) => {
+  return (
+    <Wrapper className="result__info">
+      <p>{info}</p>
+    </Wrapper>
+  );
+};

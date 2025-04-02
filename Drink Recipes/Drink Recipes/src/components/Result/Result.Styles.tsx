@@ -9,7 +9,6 @@ export const Wrapper = styled.div`
     padding: 20px;
     justify-content: center;
     margin-bottom: 1rem;
-
   }
   .result__header {
     h2,
@@ -46,13 +45,27 @@ export const Wrapper = styled.div`
       border: none;
       color: #fff;
       padding: 10px 20px;
-      @media(max-width: 1400px){
+      @media (max-width: 1400px) {
         width: 50%;
       }
-     
+
       &:hover {
         background-color: coral;
       }
+    }
+  }
+
+  &.result__info {
+    padding: 1rem;
+    width: 80%;
+    margin: 0 auto;
+    border: 1px solid black;
+    background-color: coral;
+    border-radius: 10px;
+    p {
+      font-size: 1.6rem;
+      font-weight: 500;
+      color: #faff70;
     }
   }
 `;
