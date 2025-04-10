@@ -8,11 +8,11 @@ type GridProps = {
   results: Cocktail[];
 };
 
-const Grid = ({ results }: GridProps) => {
+export const Grid = ({ results }: GridProps) => {
   const resList = results.map(
     (drink) =>
       drink && (
-        <div className="col-12 col-md-6 col-xl-4" key={drink.idDrink}>
+        <div className="col-12 col-md-6 col-xl-4" key={drink.idDrink}  data-testid="drink-item">
           <Result
             key={drink.idDrink}
             name={drink.strDrink}
@@ -31,4 +31,3 @@ const Grid = ({ results }: GridProps) => {
   );
 };
 
-export default Grid;

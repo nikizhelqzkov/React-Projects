@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Search from "./Search/Search";
 import { Cocktail } from "../Models/Coctail";
 import { Row } from "react-bootstrap";
-import Grid from "./Grid/Grid";
+import { Grid } from "./Grid/Grid";
 
 export default function Main() {
   const [coctails, setCoctails] = useState<Cocktail[]>([]);
@@ -39,19 +39,9 @@ export default function Main() {
       )}
 
       {!isInitial && coctails.length > 0 && (
-        <Row className="justify-content-center mx-auto">
-           {coctails.length !== 0 && <Grid results={coctails} />}
+        <Row className="justify-content-center mx-auto" data-testid="results">
+          {coctails.length !== 0 && <Grid results={coctails} />}
         </Row>
-        // <div className="text-center mt-3">
-        //   <h2>Results:</h2>
-        //   <div className="d-flex flex-wrap justify-content-center">
-        //     {coctails.map((coctail) => (
-        //       <div key={coctail.idDrink} className="m-2">
-        //         <h3>{coctail.strDrink}</h3>
-        //       </div>
-        //     ))}
-        //   </div>
-        // </div>
       )}
     </>
   );
