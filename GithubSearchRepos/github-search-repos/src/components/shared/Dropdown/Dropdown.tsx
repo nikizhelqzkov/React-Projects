@@ -4,7 +4,6 @@ type DropdownProps = {
   value: string | number;
   onChange: (value: string) => void;
   options: Array<{ value: string; label: string }>;
-  labelWidth: string;
   containerClassName?: string;
 };
 
@@ -14,7 +13,6 @@ export const Dropdown = ({
   value,
   onChange,
   options,
-  labelWidth,
   containerClassName = "flex-1",
 }: DropdownProps) => {
   return (
@@ -28,9 +26,7 @@ export const Dropdown = ({
         </label>
         <select
           id={id}
-          className={`w-full h-10 appearance-none border border-gray-300 rounded-md text-right pr-8 bg-white focus:outline-none focus:ring-1 focus:ring-blue-500`}
-          style={{ paddingLeft: labelWidth }}
-          value={value}
+          className={`w-full h-10 appearance-none border border-gray-300 rounded-md text-right pl pr-8 bg-white focus:outline-none focus:ring-1 focus:ring-blue-500`}          value={value}
           onChange={(e) => onChange(e.target.value)}
         >
           {options.map((option) => (

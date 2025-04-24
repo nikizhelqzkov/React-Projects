@@ -107,7 +107,6 @@ export const Options = ({
           { value: "50", label: "50" },
           { value: "100", label: "100" },
         ]}
-        labelWidth="130px"
         containerClassName="flex-1 min-w-[150px]"
       />
 
@@ -125,7 +124,6 @@ export const Options = ({
           { value: "forks", label: "Forks" },
           { value: "updated", label: "Updated" },
         ]}
-        labelWidth="80px"
         containerClassName="flex-1/4 min-w-[250px]"
       />
 
@@ -141,7 +139,6 @@ export const Options = ({
           { value: "desc", label: "Descending" },
           { value: "asc", label: "Ascending" },
         ]}
-        labelWidth="65px"
         containerClassName="flex-1 min-w-[150px]"
       />
     </div>
