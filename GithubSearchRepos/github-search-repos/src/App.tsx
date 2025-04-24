@@ -27,7 +27,7 @@ function App() {
           searchCriteria.search
         )}&per_page=${searchCriteria.perPage}&sort=${
           searchCriteria.sortBy
-        }&order=${searchCriteria.order}`,
+        }&order=${searchCriteria.order}`
       );
 
       if (!response.ok) {
@@ -48,12 +48,13 @@ function App() {
     <div className="container mx-auto px-4 py-8">
       <Header />
       <Search onSearch={handleSearch} onFilterChange={handleSearch} />
-      <Results
-        error={error}
-        loading={loading}
-        repositories={repositories}
-        isEmpty={isEmpty}
-      />
+      {!isEmpty && (
+        <Results
+          error={error}
+          loading={loading}
+          repositories={repositories}
+        />
+      )}
     </div>
   );
 }
