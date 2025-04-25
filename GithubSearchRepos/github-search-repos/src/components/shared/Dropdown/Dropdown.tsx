@@ -1,4 +1,4 @@
-type DropdownProps = {
+export type DropdownProps = {
   id: string;
   label: string;
   value: string | number;
