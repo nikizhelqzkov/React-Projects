@@ -32,15 +32,16 @@ export default function Search({
       clearTimeout(debounceTimerRef.current);
     }
 
-    // Set new timer only if search has content
-    if (search.trim()) {
-      debounceTimerRef.current = setTimeout(() => {
-        // Use the current filter values from ref
-        const { perPage, sortBy, order } = filterValuesRef.current;
-        onSearch({ search, perPage, sortBy, order });
-        debounceTimerRef.current = null;
-      }, 500);
+    if (search === "") {
+      onSearch({ search: "", perPage, sortBy, order });
+      return;
     }
+    debounceTimerRef.current = setTimeout(() => {
+      // Use the current filter values from ref
+      const { perPage, sortBy, order } = filterValuesRef.current;
+      onSearch({ search, perPage, sortBy, order });
+      debounceTimerRef.current = null;
+    }, 500);
 
     return () => {
       if (debounceTimerRef.current) {

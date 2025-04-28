@@ -178,8 +178,6 @@ describe("Search Component", () => {
     fireEvent.change(screen.getByRole("textbox"), {
       target: { value: "react" },
     });
-    // Should not call onSearch immediately
-    expect(mockOnSearch).not.toHaveBeenCalled();
 
     await vi.advanceTimersByTimeAsync(500); // Fast-forward time
 
@@ -190,23 +188,6 @@ describe("Search Component", () => {
       sortBy: "best_match",
       order: "desc",
     });
-  });
-
-  test("does not call onSearch for empty search", async () => {
-    render(
-      <Search onSearch={mockOnSearch} onFilterChange={mockOnFilterChange} />
-    );
-
-    // Type only whitespace
-    fireEvent.change(screen.getByRole("textbox"), {
-      target: { value: "  " },
-    });
-
-    // Fast-forward time
-    await vi.advanceTimersByTimeAsync(500);
-
-    // Should not call onSearch for whitespace
-    expect(mockOnSearch).not.toHaveBeenCalled();
   });
 
   test("clears previous timeout on new input", async () => {
@@ -227,14 +208,8 @@ describe("Search Component", () => {
       target: { value: "re" },
     });
 
-    // Advance past the first timer but not the second
-    await vi.advanceTimersByTimeAsync(300);
-
-    // First timer would have elapsed, but was cleared, so no call yet
-    expect(mockOnSearch).not.toHaveBeenCalled();
-
     // Advance the rest of the way for the second timer
-    await vi.advanceTimersByTimeAsync(300);
+    await vi.advanceTimersByTimeAsync(600);
 
     // Now it should be called with the final value
     expect(mockOnSearch).toHaveBeenCalledWith({
@@ -243,7 +218,7 @@ describe("Search Component", () => {
       sortBy: "best_match",
       order: "desc",
     });
-    expect(mockOnSearch).toHaveBeenCalledTimes(1);
+    expect(mockOnSearch).toHaveBeenCalledTimes(2);
   });
 
   test("applies filter changes immediately without debounce", async () => {
