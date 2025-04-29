@@ -24,6 +24,11 @@ export default function Search({
   // Update ref whenever filter values change
   useEffect(() => {
     filterValuesRef.current = { perPage, sortBy, order };
+    // Cancel any pending debounced search
+    if (debounceTimerRef.current) {
+      clearTimeout(debounceTimerRef.current);
+      debounceTimerRef.current = null;
+    }
   }, [perPage, sortBy, order]);
 
   // Debounce ONLY search text changes
@@ -33,13 +38,12 @@ export default function Search({
     }
 
     if (search === "") {
-      onSearch({ search: "", perPage, sortBy, order });
+      onSearch({ search: "", ...filterValuesRef.current });
       return;
     }
     debounceTimerRef.current = setTimeout(() => {
       // Use the current filter values from ref
-      const { perPage, sortBy, order } = filterValuesRef.current;
-      onSearch({ search, perPage, sortBy, order });
+      onSearch({ search, ...filterValuesRef.current });
       debounceTimerRef.current = null;
     }, 500);
 

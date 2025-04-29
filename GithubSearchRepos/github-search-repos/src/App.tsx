@@ -43,17 +43,20 @@ function App() {
       setLoading(false);
     }
   }, []);
-
+  
+  const handleFilterChange = useCallback(
+    async (searchCriteria: SearchCriteria) => {
+      if (!searchCriteria.search) return; // Don't search if no search term
+      handleSearch(searchCriteria);
+    },
+    [handleSearch]
+  );
   return (
     <div className="container mx-auto px-4 py-8">
       <Header />
-      <Search onSearch={handleSearch} onFilterChange={handleSearch} />
+      <Search onSearch={handleSearch} onFilterChange={handleFilterChange} />
       {!isEmpty && (
-        <Results
-          error={error}
-          loading={loading}
-          repositories={repositories}
-        />
+        <Results error={error} loading={loading} repositories={repositories} />
       )}
     </div>
   );

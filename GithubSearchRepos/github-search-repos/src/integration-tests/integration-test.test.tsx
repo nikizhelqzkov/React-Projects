@@ -202,5 +202,131 @@ describe("GitHub Repository Search - Integration Tests", () => {
     );
   });
 
-  
+  test("API error handling - shows error message", async () => {
+    // Mock error response
+    mockFetch.mockResolvedValue({
+      ok: false,
+      status: 403,
+    });
+
+    render(<App />);
+
+    // Search for repositories
+    const searchInput = screen.getByPlaceholderText(
+      "Search for a repository..."
+    );
+    fireEvent.change(searchInput, { target: { value: "react" } });
+
+    await act(async () => {
+      vi.runAllTimers();
+    });
+
+    expect(screen.getByText("GitHub API returned 403")).toBeInTheDocument();
+  });
+
+  test("empty results - shows no results found message", async () => {
+    // Mock empty response
+    mockFetch.mockResolvedValue({
+      ok: true,
+      json: async () => ({ items: [] }),
+    });
+
+    render(<App />);
+
+    // Search for repositories
+    const searchInput = screen.getByPlaceholderText(
+      "Search for a repository..."
+    );
+    fireEvent.change(searchInput, {
+      target: { value: "nonexistentrepository" },
+    });
+
+    await act(async () => {
+      vi.runAllTimers();
+    });
+
+    //     // No results message should be visible
+    expect(screen.getByText("No results found")).toBeInTheDocument();
+  });
+
+  test("loading state - shows loading indicator during API calls", async () => {
+    // Mock delayed response to simulate loading state
+    mockFetch.mockImplementation(
+      () =>
+        new Promise((resolve) => {
+          setTimeout(() => {
+            resolve({
+              ok: true,
+              json: async () => ({ items: mockRepositories }),
+            });
+          }, 500); // Simulate a 500ms delay in the API response
+        })
+    );
+
+    render(<App />);
+
+    // Search for repositories
+    const searchInput = screen.getByPlaceholderText(
+      "Search for a repository..."
+    );
+    fireEvent.change(searchInput, { target: { value: "react" } });
+
+    // Trigger debounce
+    act(() => {
+      vi.runAllTimers(); // Advance timers to trigger the debounce effect
+    });
+
+    // Assert that the loading state is visible immediately after the debounce
+    expect(screen.getByText("Loading...")).toBeInTheDocument();
+    // Advance time to complete the API call
+    await act(async () => {
+      vi.advanceTimersByTime(500); // Simulate the API response delay
+    });
+
+    expect(screen.queryByText("Loading...")).not.toBeInTheDocument();
+    expect(screen.getByText("react")).toBeInTheDocument();
+    expect(screen.getByText("react-router")).toBeInTheDocument();
+  });
+
+  test("search cancellation - changing filters cancels previous search", async () => {
+    // Single mock implementation
+    mockFetch.mockImplementation(() =>
+      Promise.resolve({
+        ok: true,
+        json: () => Promise.resolve({ items: mockRepositories }),
+      })
+    );
+
+    render(<App />);
+
+    // Type search text but don't advance timer yet
+    act(() => {
+      const searchInput = screen.getByPlaceholderText(
+        "Search for a repository..."
+      );
+      fireEvent.change(searchInput, { target: { value: "react" } });
+    });
+
+    // Change filter immediately (before debounce timer fires)
+    act(() => {
+      const sortByDropdown = screen.getByLabelText("Sort by");
+      fireEvent.change(sortByDropdown, { target: { value: "stars" } });
+    });
+
+    // Now advance timers to trigger the debounced search
+    act(() => {
+      vi.runAllTimers();
+    });
+
+    // Switch to real timers for the fetch promise
+    vi.useRealTimers();
+
+    // Wait for fetch to complete and verify it was called only once
+    await waitFor(() => {
+      expect(mockFetch).toHaveBeenCalledTimes(1);
+      expect(mockFetch).toHaveBeenCalledWith(
+        expect.stringContaining("q=react&per_page=10&sort=stars&order=desc")
+      );
+    });
+  });
 });
