@@ -329,4 +329,75 @@ describe("GitHub Repository Search - Integration Tests", () => {
       );
     });
   });
+
+  test("repository cards - display all required information", async () => {
+    // Mock successful response
+    mockFetch.mockResolvedValue({
+      ok: true,
+      json: async () => ({ items: mockRepositories }),
+    });
+
+    render(<App />);
+
+    // Search for repositories
+    const searchInput = screen.getByPlaceholderText(
+      "Search for a repository..."
+    );
+    fireEvent.change(searchInput, { target: { value: "react" } });
+
+    await act(async () => {
+      vi.runAllTimers();
+    });
+
+    // Wait for results
+    //   await waitFor(() => {
+    // Verify repository names
+    expect(screen.getByText("react")).toBeInTheDocument();
+    expect(screen.getByText("react-router")).toBeInTheDocument();
+
+    // Verify descriptions
+    expect(
+      screen.getByText("A JavaScript library for building user interfaces")
+    ).toBeInTheDocument();
+    expect(
+      screen.getByText("Declarative routing for React")
+    ).toBeInTheDocument();
+
+    // Verify star counts
+    expect(screen.getByText("Stars: 200000")).toBeInTheDocument();
+    expect(screen.getByText("Stars: 50000")).toBeInTheDocument();
+
+    // Verify links
+    const links = screen.getAllByText("View Repository");
+    expect(links[0]).toHaveAttribute(
+      "href",
+      "https://github.com/facebook/react"
+    );
+    expect(links[1]).toHaveAttribute(
+      "href",
+      "https://github.com/remix-run/react-router"
+    );
+  });
+
+  test("network error - shows appropriate error message", async () => {
+    // Mock network error
+    mockFetch.mockRejectedValue(new Error("Network error"));
+
+    render(<App />);
+
+    // Search for repositories
+    const searchInput = screen.getByPlaceholderText(
+      "Search for a repository..."
+    );
+    fireEvent.change(searchInput, { target: { value: "react" } });
+
+    await act(async () => {
+      vi.runAllTimers();
+    });
+
+    // Error message should be visible
+    //   await waitFor(() => {
+    expect(screen.getByText("Network error")).toBeInTheDocument();
+    //   });
+  });
 });

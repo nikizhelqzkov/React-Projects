@@ -43,7 +43,7 @@ function App() {
       setLoading(false);
     }
   }, []);
-  
+
   const handleFilterChange = useCallback(
     async (searchCriteria: SearchCriteria) => {
       if (!searchCriteria.search) return; // Don't search if no search term
